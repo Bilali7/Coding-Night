@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="sign.css">
+</head>
+<body>
+    <!-- <p id="errormessage"></p> -->
+  <div class="container">
+    <h1>Sing Up</h1>
+    <form id="signup">
+      <div class="incorrect">
+        <label for="firstname">
+          <img src="image/user.png" height="26" viewBox="0- 960 960 960" width="33px">
+        </label>
+        <input type="text" id="user" placeholder="UserName" required>
+      </div>
+      
+      <div>
+        <label for="emails">
+          <img src="image/email.png" height="26" width="33px">
+        </label>
+        <input type="email" id="email" placeholder="Email" required>
+      </div>
+      
+      <div>
+        <label for="password">
+          <img src="image/password.png" height="26" width="33px">
+        </label>
+        <input type="password" id="password" placeholder="Password" required>
+      </div>
+      
+      <div>
+        <label for="password">
+          <img src="image/password.png" height="26" width="33px">
+        </label>
+        <input type="password" id="confirmPassword" placeholder="ConfirmPassword" required>
+      </div>
+
+      <button id="sum">Sing Up</button>
+    </form>
+    <p>Already Have A Account <a href="login.html">Login ?</a></p>
+  </div>  
+    <!-- <h1>SignUp Form</h1>
+    <div class="container">
+        <input type="text" placeholder="user" id="user">
+        <input type="text" placeholder="first" id="first">
+        <input type="text" placeholder="last" id="last">
+        <input type="email" placeholder="email" id="email">
+        <input type="password" placeholder="password" id="password">
+        <input type="password" placeholder="confirm password" id="confirmPassword">
+        <button id="sum">Sumbit</button> <p>Already have a account ? <a href="login.html" id="show">Login</a></p>
+    </div> -->
+</body>
+<script src="sign.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+</html>

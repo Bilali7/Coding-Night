@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#theme-toggle-button {
+  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  width: 6em;
+  cursor: pointer;
+  padding-bottom: 1em; 
+}
+
+/* Hide default HTML checkbox */
+#toggle {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+#container,
+#patches,
+#stars,
+#button,
+#sun,
+#moon,
+#cloud {
+  transition-property: all;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 0.25s;
+}
+
+/* night sky background */
+#toggle:checked + svg #container {
+  fill: #2b4360;
+}
+
+/* move button to right when checked */
+#toggle:checked + svg #button {
+  transform: translate(28px, 2.333px);
+}
+
+/* show/hide sun and moon based on checkbox state */
+#sun {
+  opacity: 1;
+}
+
+#toggle:checked + svg #sun {
+  opacity: 0;
+}
+
+#moon {
+  opacity: 0;
+}
+
+#toggle:checked + svg #moon {
+  opacity: 1;
+}
+
+/* show or hide background items on checkbox state */
+#cloud {
+  opacity: 1;
+}
+
+#toggle:checked + svg #cloud {
+  opacity: 0;
+}
+
+#stars {
+  opacity: 0;
+}
+
+#toggle:checked + svg #stars {
+  opacity: 1;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* .dumper {
+    text-align: center;
+    width: 100%;
+} */
+
+.dumper {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    gap: 40px;
+}
+
+h1 {
+  font-size:8em;
+}
+h2 {
+  font-size: 3em;
+}

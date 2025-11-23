@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="sign.css">
+</head>
+<body>
+    <p id="errormessage"></p>
+    <div class="container">
+        <form id="showlogin">
+          <h1>Login</h1>
+        <div class="incorrect">
+            <input type="email" id="email" placeholder="Email" maxlength="16" required class="ok">
+            <label for="emails">
+                <img src="image/email.png" width="28" height="26">
+            </label>
+        </div>
+            
+        <div class="incorrect">
+            <input type="password" id="password" placeholder="Password" maxlength="8" required class="ok">
+            <label for="password">
+                <img src="image/password.png" width="28" height="26">
+            </label> 
+        </div>
+        <button id="login">Login</button>
+        </form>
+    <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+    </div>  
+</body>
+<script src="login.js"></script>
+</html>
