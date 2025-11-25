@@ -3,14 +3,14 @@ let currentTheme = 'light';
 
 // Load saved theme from localStorage (if any) and apply
 const savedTheme = localStorage.getItem('siteTheme');
-if (savedTheme) {
+if(savedTheme) {
     currentTheme = savedTheme;
     applyTheme(currentTheme);
-    if (toogle) toogle.checked = currentTheme === 'dark';
+    if(toogle) toogle.checked = currentTheme === 'dark';
 }
 
 // When user toggles theme, apply and persist choice
-if (toogle) {
+if(toogle) {
     toogle.addEventListener('change', () => {
         currentTheme = toogle.checked ? 'dark' : 'light';
         applyTheme(currentTheme);
@@ -41,16 +41,16 @@ const storageKey = 'socialMediaPosts';
 
 // Get DOM elements
 // const authorInput = document.getElementById('authorInput');
-const postInput = document.getElementById('postInput');
-const postBtn = document.getElementById('postBtn');
-const imageInput = document.getElementById('imageInput');
-const imageBtn = document.getElementById('imageBtn');
-const imageName = document.getElementById('imageName');
-const searchInput = document.getElementById('searchInput');
-const logoutBtn = document.getElementById('logoutBtn');
-const postsContainer = document.getElementById('postsContainer');
-const emptyState = document.getElementById('emptyState');
-const clearAllBtn = document.getElementById('clearAllBtn');
+const postInput = document.getElementById('postInput'); // access
+const postBtn = document.getElementById('postBtn'); // access
+const imageInput = document.getElementById('imageInput'); // access
+const imageBtn = document.getElementById('imageBtn'); // access
+const imageName = document.getElementById('imageName'); // access
+const searchInput = document.getElementById('searchInput'); // access
+const logoutBtn = document.getElementById('logoutBtn'); // access
+const postsContainer = document.getElementById('postsContainer'); // access
+const emptyState = document.getElementById('emptyState'); // access
+const clearAllBtn = document.getElementById('clearAllBtn'); // access
 const postCount = document.getElementById('postCount');
 let selectedImage = null;
 
@@ -129,12 +129,12 @@ function addComment(postId) {
     const commentInput = document.querySelector(`#comment-input-${postId}`);
     const commentText = commentInput.value.trim();
 
-    if (!commentText) {
+    if(!commentText) {
         alert('Please write a comment!');
         return;
     }
 
-    for (let i = 0; i < posts.length; i++) {
+    for(let i = 0; i < posts.length; i++) {
         if (posts[i].id === postId) {
             const comment = {
                 id: Date.now(),
@@ -154,16 +154,16 @@ function addComment(postId) {
 function deletePost(postId) {
     // Only the post author can delete the post
     const post = posts.find(p => p.id === postId);
-    if (!post) return;
+    if(!post) return;
     const currentUser = loginLS.users;
-    if (post.author !== currentUser) {
+    if(post.author !== currentUser) {
         alert('Only the post author can delete this post.');
         return;
     }
 
-    if (confirm('Are you sure you want to delete this post?')) {
-        for (let i = 0; i < posts.length; i++) {
-            if (posts[i].id === postId) {
+    if(confirm('Are you sure you want to delete this post?')) {
+        for(let i = 0; i < posts.length; i++) {
+            if(posts[i].id === postId) {
                 posts.splice(i, 1);
                 break;
             }
@@ -176,9 +176,9 @@ function deletePost(postId) {
 function editImage(postId) {
     // Only the post author can change the image
     const post = posts.find(p => p.id === postId);
-    if (!post) return;
+    if(!post) return;
     const currentUser = loginLS.users;
-    if (post.author !== currentUser) {
+    if(post.author !== currentUser) {
         alert('Only the post author can edit the image.');
         return;
     }
@@ -188,11 +188,11 @@ function editImage(postId) {
     tempInput.accept = 'image/*';
     tempInput.onchange = function(event) {
         const file = event.target.files[0];
-        if (file) {
+        if(file) {
             const reader = new FileReader();
             reader.onload = function(e) {
-                for (let i = 0; i < posts.length; i++) {
-                    if (posts[i].id === postId) {
+                for(let i = 0; i < posts.length; i++) {
+                    if(posts[i].id === postId) {
                         posts[i].image = e.target.result;
                         break;
                     }
@@ -207,15 +207,15 @@ function editImage(postId) {
 }
 
 function editPostContent(postId) {
-    for (let i = 0; i < posts.length; i++) {
-        if (posts[i].id === postId) {
+    for(let i = 0; i < posts.length; i++) {
+        if(posts[i].id === postId) {
             const currentUser = loginLS.users;
-            if (posts[i].author !== currentUser) {
+            if(posts[i].author !== currentUser) {
                 alert('Only the post author can edit this post.');
                 return;
             }
             const newContent = prompt('Edit your post:', posts[i].content);
-            if (newContent !== null && newContent.trim()) {
+            if(newContent !== null && newContent.trim()) {
                 posts[i].content = newContent.trim();
                 savePosts();
                 renderPosts();
@@ -226,7 +226,7 @@ function editPostContent(postId) {
 }
 
 function clearAllPosts() {
-    if (confirm('Are you sure you want to delete ALL posts? This cannot be undone!')) {
+    if(confirm('Are you sure you want to delete ALL posts? This cannot be undone!')) {
         posts = [];
         savePosts();
         renderPosts();
@@ -236,10 +236,10 @@ function clearAllPosts() {
 function toggleCommentInput(postId) {
     const commentInputWrapper = document.getElementById(`comment-input-wrapper-${postId}`);
     
-    if (commentInputWrapper.style.display === 'none' || commentInputWrapper.style.display === '') {
+    if(commentInputWrapper.style.display === 'none' || commentInputWrapper.style.display === '') {
         commentInputWrapper.style.display = 'block';
         const input = document.querySelector(`#comment-input-${postId}`);
-        if (input) {
+        if(input) {
             input.focus();
         }
     } else {
@@ -278,6 +278,10 @@ function renderPosts() {
         
         if (!post.likedBy) {
             post.likedBy = [];
+        }
+        
+        if (!post.comments) {
+            post.comments = [];
         }
         
         const currentUser = loginLS.users;
@@ -350,15 +354,15 @@ postBtn.onclick = createPost;
 clearAllBtn.onclick = clearAllPosts;
 imageBtn.onclick = () => imageInput.click();
 
-if (searchInput) {
+if(searchInput) {
     searchInput.oninput = renderPosts;
 }
 
-if (logoutBtn) {
+if(logoutBtn) {
     logoutBtn.addEventListener('click', () => {
         // Optional: confirm logout
         const ok = confirm('Are you sure you want to logout?');
-        if (!ok) return;
+        if(!ok) return;
         localStorage.removeItem('loginUser');
         window.location = 'login.html';
     });
@@ -366,7 +370,7 @@ if (logoutBtn) {
 
 imageInput.onchange = function(event) {
     const file = event.target.files[0];
-    if (file) {
+    if(file) {
         const reader = new FileReader();
         reader.onload = function(e) {
             selectedImage = e.target.result;
@@ -377,7 +381,7 @@ imageInput.onchange = function(event) {
 };
 
 postInput.onkeypress = function(event) {
-    if (event.key === 'Enter' && event.ctrlKey) {
+    if(event.key === 'Enter' && event.ctrlKey) {
         createPost();
     }
 };
